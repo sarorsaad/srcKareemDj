@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import hello_world, addxy , add, performarithmetic
+from .views import hello_world, addxy , add, performarithmetic,prime
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello_world),
     path('addtwonumbers/', addxy),
     path('ADD2/', add),
-    path('arithmetic/', performarithmetic)
+    path('arithmetic/', performarithmetic),
+    path('checkPrime', prime),
 ]

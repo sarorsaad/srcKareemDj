@@ -70,3 +70,25 @@ def performarithmetic(request):
         "r4": x / y,
         "r5": x * y,
     })
+
+from .forms import PrimeForm
+from .primeTest import isPrime
+
+def prime(request):
+    b = False
+    form = PrimeForm()
+    
+    if request.method == "POST":
+        form = PrimeForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['x']
+            b = isPrime(x)
+    
+    if b == False:
+        m = "This number is not Prime"
+    else:
+        m = "This number is Prime"
+    
+    return render(request, 'layouts/prime.html', {'form': form, 'output': m})
+
