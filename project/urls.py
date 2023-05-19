@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import hello_world, addxy
+from .views import hello_world, addxy , add, performarithmetic
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello_world),
     path('addtwonumbers/', addxy),
+    path('ADD2/', add),
+    path('arithmetic/', performarithmetic)
 ]

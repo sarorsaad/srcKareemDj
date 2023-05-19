@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
+
 
 def hello_world(request):
  return HttpResponse('<div style="background-color: aquamarine; color: brown; border: 4px solid black; margin: 15px; text-align: center; width: 300px;">Hello from Django</div>')
@@ -27,3 +29,44 @@ def addxy(request):
                 </p>
             </form>
         ''')
+    
+from .forms import InputForm
+
+
+def add(request):
+    form = InputForm()
+
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['x']
+            y = cd['y']
+            z = x + y
+            return render(request, 'layouts/addition.html', {'form': form, 'output': z})
+
+    return render(request, 'layouts/addition.html', {'form': form, 'output': 0})
+
+from .forms import InputForm
+from django.shortcuts import render
+
+def performarithmetic(request):
+    y = 1
+    x=1
+    form = InputForm()
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['x']
+            y = cd['y']
+    return render(request, "layouts/arithmetic.html", {
+        "form": form,
+        "x": x,
+        "y": y,
+        "r1": x + y,
+        "r2": x - y,
+        "r3": x * y,
+        "r4": x / y,
+        "r5": x * y,
+    })
