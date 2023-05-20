@@ -116,3 +116,7 @@ def worldcup(request):
     return render(request, 'layouts/worldcup.html', {'form': form, 'output': m})
 
 
+def testview(request):
+    return render(request, 'layouts/test.html')
+
+
