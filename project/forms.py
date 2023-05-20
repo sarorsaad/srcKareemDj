@@ -9,3 +9,8 @@ class InputForm(forms.Form):
 
 class PrimeForm(forms.Form):
     x = forms.IntegerField(label="Enter a Number:")
+
+
+class WorldcupForm(forms.Form):
+    countries = forms.CharField(widget=forms.Textarea, label="Enter countries separated by -")
+

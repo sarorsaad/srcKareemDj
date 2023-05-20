@@ -1,0 +1,10 @@
+{% extends 'layouts/base2.html' %}
+{% block content %}
+<form action="/worldcup" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="start" />
+</form>
+<h1>{{ output|linebreaks }}</h1>
+
+{% endblock %}

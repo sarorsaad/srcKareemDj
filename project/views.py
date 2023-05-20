@@ -92,3 +92,27 @@ def prime(request):
     
     return render(request, 'layouts/prime.html', {'form': form, 'output': m})
 
+
+from .forms import WorldcupForm
+import random
+def worldcup(request):
+    form = WorldcupForm()
+    m = ''  # Initialize 'm' with a default value
+    
+    if request.method == "POST":
+        form = WorldcupForm(request.POST)
+        
+        if form.is_valid():
+            cd = form.cleaned_data
+            x = cd['countries']
+            y = x.split(' ')
+            
+            for i in range(int(len(y) / 2)):
+                z = random.sample(y, k=2)
+                for j in z:
+                    y.remove(j)
+                m += z[0] + 'X' + z[1] + '\n'
+    
+    return render(request, 'layouts/worldcup.html', {'form': form, 'output': m})
+
+
