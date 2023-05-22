@@ -14,3 +14,9 @@ class PrimeForm(forms.Form):
 class WorldcupForm(forms.Form):
     countries = forms.CharField(widget=forms.Textarea, label="Enter countries separated by -")
 
+
+
+from django import forms
+
+class OneInt(forms.Form):
+    number = forms.IntegerField(label='Enter a Primary Number')

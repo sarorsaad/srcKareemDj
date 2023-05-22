@@ -116,7 +116,31 @@ def worldcup(request):
     return render(request, 'layouts/worldcup.html', {'form': form, 'output': m})
 
 
+
+
+from .forms import OneInt  # Import the OneInt form
+
+def check_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+
+
 def testview(request):
-    return render(request, 'layouts/test.html')
+    if request.method == 'POST':
+        form = OneInt(request.POST)  # Instantiate the OneInt form with the submitted data
+        if form.is_valid():
+            number = form.cleaned_data['number']  # Get the submitted number from the form
+            output = check_prime(number)  # Call a function to check if the number is prime
+        else:
+            output = ''  # If the form is not valid, set the output as an empty string
+    else:
+        form = OneInt()  # Instantiate the OneInt form
+        output = ''  # Set initial value for the output variable
+
+    return render(request, 'layouts/test.html', {'form': form, 'output': output})
 
 
