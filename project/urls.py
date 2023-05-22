@@ -24,12 +24,13 @@ urlpatterns = [
     path('addtwonumbers/', addxy),
     path('ADD2/', add),
     path('arithmetic/', performarithmetic),
-    path('checkPrime', prime),
-    path('worldcup', worldcup),
-    path('test', testview),
+    path('checkPrime/', prime),
+    path('worldcup/', worldcup),
+    path('test/', testview),
 
     ##################
-        path('', include('emp.urls', namespace='emp')),
+        path('emp/', include('emp.urls', namespace='emp')),
+        path('', include('displaycontact.urls', namespace='emp')),
 
 
 ]

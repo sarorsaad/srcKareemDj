@@ -1,0 +1,16 @@
+{% extends 'layouts/base3.html' %}
+
+{% block content %}
+
+<table style="border: 5px solid black; padding: 10px; width: 100%;">
+
+    {% for item in items %}
+    <tr>
+        {% for field in item %}
+        <td>{{ field }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock  %}
